@@ -63,7 +63,7 @@ print(rv.best_params_)
 best_random_rid=rv.best_estimator_
 
 # automated hyperparameter tuning
-bayesian optimization 
+# bayesian optimization 
 from sklearn.model_selection import cross_val_score
 from sklearn.ensemble import RandomForestClassifier
 from hyperopt import hp, fmin, tpe, STATUS_OK, Trials
@@ -162,7 +162,7 @@ for i, col in enumerate(X.columns):
 3 Bmi
 4 Age
 """
-first lets balance the data set
+# first lets balance the data set
 from imblearn.combine import SMOTETomek
 sm=SMOTETomek(sampling_strategy='auto')
 Xtrain_ns,ytrain_ns=sm.fit_resample(Xtrain,ytrain)
