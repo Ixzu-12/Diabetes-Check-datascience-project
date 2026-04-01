@@ -137,7 +137,7 @@ ex.fit(X,y)
 rank=pd.Series(ex.feature_importances_,index=X.columns)
 
 print(rank.nlargest(8))
-information gain
+# information gain
 from sklearn.feature_selection import mutual_info_classif
 mutual=mutual_info_classif(X,y)
 mutual_data=pd.Series(mutual,index=X.columns)
