@@ -40,27 +40,37 @@ from sklearn.metrics import classification_report,confusion_matrix,accuracy_scor
 print(classification_report(ytest,prediction))
 print(confusion_matrix(ytest,prediction))
 print(accuracy_score(ytest,prediction))
+from sklearn.model_selection import GridSearchCV, KFold, RandomizedSearchCV
+from sklearn.ensemble import RandomForestClassifier
+import numpy as np
 
-from sklearn.model_selection import GridSearchCV,KFold,RandomizedSearchCV
-rf=RandomForestClassifier()
+rf = RandomForestClassifier()
 
-criteration=['entropy,gini']
-n_estimators=[int(x) for x in np.linspace(start=200,stop=2000,num=10)]
-max_features=['auto','sqrt','log2',]
-max_depth=[int(x) for x in np.linspace(10,1000,10)]
-min_sample=[1,3,5,7,9,11]
-min_sample_leaf=[1,2,4,6,8]
-randomgrid={'n_estimators': n_estimators,
-            'max_features':max_features,
-            'max_depth':max_depth,
-            'min_sample':min_sample,
-            'min_sample_leaf':min_sample_leaf,
-            'criteration':criteration
+# Corrected variable names to match standard Sklearn parameters
+criterion = ['entropy', 'gini']
+n_estimators = [int(x) for x in np.linspace(start=200, stop=2000, num=10)]
+max_features = ['auto', 'sqrt', 'log2']
+max_depth = [int(x) for x in np.linspace(10, 1000, 10)]
+min_samples_split = [2, 5, 7, 9, 11] # Note: min_samples_split must be >= 2
+min_samples_leaf = [1, 2, 4, 6, 8]
+
+# Corrected dictionary keys
+randomgrid = {
+    'n_estimators': n_estimators,
+    'max_features': max_features,
+    'max_depth': max_depth,
+    'min_samples_split': min_samples_split,
+    'min_samples_leaf': min_samples_leaf,
+    'criterion': criterion
 }
-rv=RandomizedSearchCV(estimator=rf,param_distributions=randomgrid,n_iter=100,cv=3,verbose=2,random_state=100,n_jobs=-1)
-rv.fit(Xtrain,ytrain)
+
+rv = RandomizedSearchCV(estimator=rf, param_distributions=randomgrid, n_iter=100, cv=3, verbose=2, random_state=100, n_jobs=-1)
+
+# This should now run successfully
+rv.fit(Xtrain, ytrain)
 print(rv.best_params_)
-best_random_rid=rv.best_estimator_
+best_random_rid = rv.best_estimator_
+
 
 # automated hyperparameter tuning
 # bayesian optimization 
