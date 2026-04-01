@@ -204,8 +204,9 @@ user_Age=int(input("Enter your AGE: "))
 user_insulin=float(input("Enter your insulin: "))
 user_BMI=float(input("Enter your BMI: "))
 user_GLUCOSE=int(input("Enter your GLUCOSE: "))
-user_Input=np.array([[user_Age,user_insulin,user_BMI,user_GLUCOSE,]])
-prediction=rf.predict(user_Input)
+
+user_Input = np.array([[user_GLUCOSE, user_insulin, user_BMI, user_Age]])
+prediction = rf.predict(user_Input)
 if prediction==1:
     print('You have diabetes')
 else:
