@@ -5,3 +5,4 @@ hyperopt
 matplotlib
 seaborn
 plotly
+setuptools
