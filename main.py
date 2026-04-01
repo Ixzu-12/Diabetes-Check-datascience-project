@@ -62,7 +62,7 @@ rv.fit(Xtrain,ytrain)
 print(rv.best_params_)
 best_random_rid=rv.best_estimator_
 
-automated hyperparameter tuning
+# automated hyperparameter tuning
 bayesian optimization 
 from sklearn.model_selection import cross_val_score
 from sklearn.ensemble import RandomForestClassifier
