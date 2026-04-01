@@ -43,7 +43,7 @@ print(accuracy_score(ytest,prediction))
 
 from sklearn.model_selection import GridSearchCV,KFold,RandomizedSearchCV
 rf=RandomForestClassifier()
-rv=RandomizedSearchCV()
+
 criteration=['entropy,gini']
 n_estimators=[int(x) for x in np.linspace(start=200,stop=2000,num=10)]
 max_features=['auto','sqrt','log2',]
